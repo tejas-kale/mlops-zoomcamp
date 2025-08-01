@@ -198,3 +198,6 @@ cython_debug/
 **models/
 **output/
 **mlruns/
+.db
+**mlruns/
+**output/
