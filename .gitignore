@@ -201,3 +201,9 @@ cython_debug/
 .db
 **mlruns/
 **output/
+*.db
+*.bin
+*.lock
+*.html
+*.parquet
+uv.lock
