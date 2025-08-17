@@ -1,0 +1,40 @@
+version: "3.7"
+
+volumes:
+  grafana_data: {} # Volume for Grafana data persistence
+
+networks:
+  back-tier:    # Network for internal communication
+  front-tier:   # Network for external access
+
+services:
+  postgres:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: "example" # Replace with a strong password
+    ports:
+      - "5432:5432" # Example, not publicly accessible
+    networks:
+      - back-tier
+  
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - "8080:8080"
+    networks:
+      - back-tier
+      - front-tier
+  
+  grafana:
+    image: grafana/grafana
+    user: "472" #Recommended non-root user per documentation
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./config/grafana_datasources.yml:/etc/grafana/provisioning/datasources/datasources.yaml
+    networks:
+      - back-tier
+      - front-tier
+    restart: always

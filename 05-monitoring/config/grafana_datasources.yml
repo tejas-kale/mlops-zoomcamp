@@ -1,0 +1,13 @@
+version: 1
+
+datasources:
+  - name: PostgreSQL
+    type: postgresd
+    access: proxy
+    url: postgres:5432
+    database: postgres
+    user: postgres
+    secureJsonData:
+      password: example
+    jsonData:
+      sslmode: disable
