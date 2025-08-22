@@ -23,3 +23,10 @@ dependencies = [
     "sqlalchemy>=2.0.41",
     "tqdm>=4.67.1",
 ]
+
+[dependency-groups]
+dev = [
+    "awscli>=1.42.16",
+    "pytest>=8.4.1",
+    "s3fs>=0.4.2",
+]
